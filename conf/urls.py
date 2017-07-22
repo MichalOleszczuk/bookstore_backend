@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include('apps.api.urls')),
     url(r'^accounts/', include('allauth.urls')),
+    url(r'^accounts/profile/', RedirectView.as_view(url='http://127.0.0.1:3000'), name='frontend-redirect'),
 ]
